@@ -103,3 +103,55 @@ body {
 .back-icon:hover {
     text-decoration: underline;
 }
+
+@media screen and (max-width: 600px) {
+    .order-container {
+        padding: 10px;
+    }
+
+    .order-header {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .order-options {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .order-option {
+        width: 48%;
+    }
+
+    .option-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .overlay {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .pickup-address {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .address-link {
+        font-size: 1.2rem;
+        padding: 10px;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .back-button {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .back-icon {
+        font-size: 1rem;
+    }
+}

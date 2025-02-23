@@ -274,92 +274,124 @@ body {
     text-decoration: underline;
 }
 
-/* Media queries for phone view */
-@media (max-width: 768px) {
-    .baked-goods {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* Two items per row */
-        gap: 10px;
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 10px;
     }
-}
 
-@media (max-width: 480px) {
     .header {
-        flex-direction: row;
-        justify-content: space-between; /* Ensure space between back button and contact us */
+        display: flex;
+        justify-content: space-between;
         align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .back-button {
+        margin: 5px 0;
     }
 
     .contact-us {
-        margin-top: 0;
+        margin-top: 30px;
+        margin-right: 10px;
     }
 
     .order-type-message {
-        font-size: 1.5em;
-        margin-top: 80px; /* Lower the order-type-message */
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 10px;
+        margin-top: 0;
     }
 
     .baked-goods {
-        grid-template-columns: repeat(1, 1fr); /* One item per row for very small screens */
-        margin-top: 100px; /* Lower the baked goods display further */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        justify-content: center; /* Center the baked goods */
     }
 
     .baked-item {
-        width: 150px;
-        height: 200px;
+        width: 85%; /* Ensure frames are wide enough */
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        padding: 5px;
+    }
+
+    .baked-image {
+        width: 100%;
+        height: 130px; /* Ensures all images have the same height */
+        object-fit: cover;
     }
 
     .item-name {
-        font-size: 1em;
+        font-size: 1rem;
+        text-align: center;
+        margin-top: 5px;
+        height: 45px; /* Consistent frame height for text display */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .item-price {
-        font-size: 0.9em;
+        font-size: 0.9rem;
+        text-align: center;
+        margin-top: 5px; /* Consistent spacing for price display */
+        height: 20px; /* Consistent frame height for price display */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .baked-item:nth-child(1) .item-price, /* Banana Cookies */
+    .baked-item:nth-child(2) .item-price, /* Pineapple Cookies */
+    .baked-item:nth-child(5) .item-price, /* Vanilla Cookies */
+    .baked-item:nth-child(6) .item-price { /* Strawberry Cookies */
+        margin-top: 20px; /* Move the prices down a bit for these items */
     }
 
     .add-to-basket {
-        font-size: 1.2em;
+        display: block;
+        margin: 0 auto;
+        font-size: 0.9rem;
+        margin-top: 5px;
     }
 
     .basket {
-        width: 120px;
-        font-size: 1em;
-        left: 50%;
-        transform: translateX(-50%);
+        font-size: 1.2rem;
+        text-align: center;
+        margin-top: 20px;
+        max-width: 100%; /* Ensure the basket fits within the screen */
+        overflow: hidden; /* Prevent overflowing content */
     }
-    /* Other styles */
-#payment-form {
-    margin-top: 20px;
-    text-align: left;
+
+    .basket-button {
+        position: fixed;
+        bottom: 10px; /* Position the button 10px from the bottom of the screen */
+        right: 10px; /* Position the button 10px from the right side of the screen */
+        background-color: #ff6600; /* Customize the button color */
+        color: white; /* Button text color */
+        padding: 10px 20px; /* Padding for the button */
+        border: none; /* Remove border */
+        border-radius: 5px; /* Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow for better visibility */
+        z-index: 1000; /* Ensure the button is on top of other elements */
+        cursor: pointer; /* Change cursor to pointer on hover */
+    }
+    
+    
+    
+
+    .cart-items, .cart-total, .done-button, .order-details-container {
+        width: 100%;
+        text-align: center;
+    }
+
+    .close-cart {
+        float: right;
+    }
+
+    .cart-total, .done-button {
+        margin-top: 10px;
+    }
 }
 
-#payment-form label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-#payment-form input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-}
-
-.order-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    font-size: 1em;
-    color: #fff;
-    background-color: #1e90ff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.order-button:hover {
-    background-color: #1c86ee;
-}
-
-}
