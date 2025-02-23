@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address - Esplorer Bakery</title>
+    <link rel="stylesheet" href="Address.css">
+</head>
+<body>
+    <div class="address-container">
+        <div class="back-button">
+            <a href="ordernow.html" class="back-icon">← Back</a>
+        </div>
+        <div class="address-details">
+            <p>Address - Emene, Thinkers Corner, Old Airport Road</p>
+            <p>The house opposite Crunchies</p>
+            <div class="images">
+                <img src="crunchies.jpg" alt="Image 1" class="address-image" onclick="openImage('crunchies.jpg')">
+                <img src="house.jpg" alt="Image 2" class="address-image" onclick="openImage('house.jpg')">
+            </div>
+            <p>Please do call if you have any questions, if you are lost, on our street, or right outside the gate.</p>
+            <p>Contact Us: 09045466460</p>
+        </div>
+        <div id="image-popup" class="image-popup">
+            <button class="close-image" onclick="closeImage()">X</button>
+            <img id="popup-image" src="" alt="Enlarged Image">
+        </div>
+    </div>
+    <script>
+        function openImage(src) {
+            document.getElementById('popup-image').src = src;
+            document.getElementById('image-popup').style.display = 'block';
+        }
+
+        function closeImage() {
+            document.getElementById('image-popup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
+

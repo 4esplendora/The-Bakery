@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pickup Order - Esplorer Bakery</title>
+    <link rel="stylesheet" href="styles3.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="back-button">
+                <a href="ordernow.html" class="back-icon">← Back</a>
+            </div>
+            <div class="contact-us">Contact Us: 09045466460</div>
+        </div>
+        <div class="order-type-message">Order set for Pickup</div>
+        <div class="baked-goods">
+            <div class="baked-item">
+                <img src="banan cookies.jpg" alt="Banana Cookies" class="baked-image">
+                <div class="item-name">Banana Cookie</div>
+                <div class="item-price">N500</div>
+                <button class="add-to-basket" onclick="addToCart('Banana Cookies', 500)">+</button>
+            </div>
+            <div class="baked-item">
+                <img src="Pineapple cookie.jpg" alt="Pineapple Cookie" class="baked-image">
+                <div class="item-name">Pineapple Cookie</div>
+                <div class="item-price">N500</div>
+                <button class="add-to-basket" onclick="addToCart('Pineapple Cookie', 500)">+</button>
+            </div>
+            <div class="baked-item">
+                <img src="Carrot cookie.jpg" alt="Carrot Cookie" class="baked-image">
+                <div class="item-name">Carrot Cookie</div>
+                <div class="item-price">N500</div>
+                <button class="add-to-basket" onclick="addToCart('Carrot Cookie', 500)">+</button>
+            </div>
+            <div class="baked-item">
+                <img src="coconut cookie.jpg" alt="Coconut Cookie" class="baked-image">
+                <div class="item-name">Coconut Cookie</div>
+                <div class="item-price">N500</div>
+                <button class="add-to-basket" onclick="addToCart('Coconut Cookie', 500)">+</button>
+            </div>
+            
+            <div class="baked-item">
+                <img src="vanilla cookies.jpg" alt="Vanilla Cookie" class="baked-image">
+                <div class="item-name">Vanilla Cookie</div>
+                <div class="item-price">N500</div>
+                <button class="add-to-basket" onclick="addToCart('Vanilla Cookie', 500)">+</button>
+            </div>
+            <div class="baked-item">
+                <img src="Strawberry cookies.jpg" alt="Strawberry Cookie" class="baked-image">
+                <div class="item-name">Strawberry Cookie</div>
+                <div class="item-price">N500</div>
+                <button class="add-to-basket" onclick="addToCart('Strawberry Cookie', 500)">+</button>
+            </div>
+            <div class="baked-item">
+                <img src="milk cookies.jpg" alt="Milk Cookie" class="baked-image">
+                <div class="item-name">Milk Cookie</div>
+                <div class="item-price">N500</div>
+                <button class="add-to-basket" onclick="addToCart('Milk Cookie', 500)">+</button>
+            </div>
+            <div class="baked-item">
+                <img src="banana bread.jpg" alt="Pound Cake" class="baked-image">
+                <div class="item-name">Pound Cake</div>
+                <div class="item-price">N8500</div>
+                <button class="add-to-basket" onclick="addToCart('Banana Bread', 8500)">+</button>
+            </div>
+            <div class="baked-item">
+                <img src="brownie.jpg" alt="Brownie" class="baked-image">
+                <div class="item-name">Brownie cake</div>
+                <div class="item-price">N5500</div>
+                <button class="add-to-basket" onclick="addToCart('Brownie', 5500)">+</button>
+            </div>
+        </div>
+        <div class="basket" onclick="showCartPopup()">
+            Basket
+        </div>
+        <div id="cart-popup">
+            <button class="close-cart" onclick="closeCartPopup()">X</button>
+            <div class="cart-items"></div>
+            <div class="cart-total"></div>
+            <button class="done-button" id="done-button" disabled onclick="completeOrder()">Done</button>
+            <div id="order-details-container" style="display:none;">
+                <textarea id="order-details" readonly></textarea>
+                <button class="copy-button" onclick="copyDetails()">Copy</button>
+                <p id="copy-notification" style="display:none;">Copied!</p>
+                <p>Copy this detail and send it to this WhatsApp number: 09045466460</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        let cart = [];
+        let cartPopup = document.getElementById('cart-popup');
+        let doneButton = document.getElementById('done-button');
+
+        function addToCart(item, price) {
+            cart.push({ item, price });
+            updateBasket();
+            updateCartPopup();
+            doneButton.disabled = cart.length === 0;
+        }
+
+        function updateBasket() {
+            let basket = document.querySelector('.basket');
+            basket.textContent = `Basket (${cart.length})`;
+        }
+
+        function showCartPopup() {
+            cartPopup.style.display = 'block';
+            if (cart.length === 0) {
+                document.querySelector('.cart-items').innerHTML = 'There is nothing in your basket';
+            } else {
+                updateCartPopup();
+            }
+        }
+
+        function updateCartPopup() {
+            let cartItems = document.querySelector('.cart-items');
+            cartItems.innerHTML = '';
+            let total = 0;
+            cart.forEach((cartItem, index) => {
+                let cartItemDiv = document.createElement('div');
+                cartItemDiv.textContent = `${cartItem.item} - N${cartItem.price}`;
+                let removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                removeButton.className = 'remove-item';
+                removeButton.onclick = () => removeFromCart(index);
+                cartItemDiv.appendChild(removeButton);
+                cartItems.appendChild(cartItemDiv);
+                total += cartItem.price;
+            });
+            let cartTotal = document.querySelector('.cart-total');
+            cartTotal.textContent = `Total: N${total}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateBasket();
+            updateCartPopup();
+            doneButton.disabled = cart.length === 0;
+        }
+
+        function closeCartPopup() {
+            cartPopup.style.display = 'none';
+        }
+
+        function completeOrder() {
+    let orderDetails = cart.map(cartItem => `${cartItem.item} - N${cartItem.price}`).join('\n');
+    let total = document.querySelector('.cart-total').textContent;
+    let details = `Pickup Order:\n\n${orderDetails}\n\n${total}`;
+    let orderDetailsContainer = document.getElementById('order-details-container');
+    let orderDetailsElement = document.getElementById('order-details');
+    orderDetailsElement.value = details;
+    orderDetailsContainer.style.display = 'block';
+
+        }
+
+        function copyDetails() {
+            let orderDetailsElement = document.getElementById('order-details');
+            orderDetailsElement.select();
+            document.execCommand('copy');
+            let copyNotification = document.getElementById('copy-notification');
+            copyNotification.style.display = 'block';
+            setTimeout(() => {
+                copyNotification.style.display = 'none';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
+
