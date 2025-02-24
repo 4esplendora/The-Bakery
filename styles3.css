@@ -97,7 +97,7 @@ body {
     font-family: 'Poppins', sans-serif;
     color: #333;
     margin-left: auto; /* Move contact us to the right */
-    margin-top: 20px; /* Lower the contact us text */
+    margin-top: 30px; /* Lower the contact us text */
 }
 
 .order-type-message {
@@ -291,7 +291,7 @@ body {
     }
 
     .contact-us {
-        margin-top: 30px;
+        margin-top: 45px;
         margin-right: 10px;
     }
 
